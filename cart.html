@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="robots" content="noindex" />
+
+    <!-- x Wed Dec 21 2022 10:55:30 GMT-0800 (Pacific Standard Time) -->
+
+    <script>
+        window.enablePerformance =
+            window.performance &&
+            performance.now &&
+            performance.timing &&
+            performance.timing.connectEnd &&
+            performance.timing.navigationStart &&
+            (Math.abs(performance.now() - Date.now()) > 1000) &&
+            (performance.now() - (performance.timing.connectEnd - performance.timing.navigationStart)) > 0;
+
+        if (window.enablePerformance) {
+            window.clientStartTime = parseInt(window.performance.now());
+        }
+    </script>
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.paypalobjects.com/webstatic/icon/pp144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.paypalobjects.com/webstatic/icon/pp114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.paypalobjects.com/webstatic/icon/pp72.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://www.paypalobjects.com/webstatic/icon/pp64.png" />
+    <link rel="shortcut icon" sizes="196x196" href="https://www.paypalobjects.com/webstatic/icon/pp196.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.paypalobjects.com/webstatic/icon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://www.paypalobjects.com/webstatic/icon/pp32.png" />
+    <link rel="apple-touch-icon" href="https://www.paypalobjects.com/en_US/i/pui/apple-touch-icon.png" />
+
+    <!-- (xo-spinner/dist/styles.less) Inlining spinner CSS, then the main CSS bundle is injected when main.js is loaded -->
+    <style type="text/css" nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+        body {
+            margin: 0
+        }
+        .loading #main {
+            opacity: .1
+        }
+        .spinner {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: 10
+        }
+        .spinner .spinWrap {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: -50px
+        }
+        .spinner .loader,
+        .spinner .spinnerImage {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            opacity: 1;
+            filter: alpha(opacity=100)
+        }
+        .spinner .spinnerImage {
+            margin: 28px 0 0 -25px;
+            background: url("https://www.paypalobjects.com/images/checkout/hermes/icon_ot_spin_lock_skinny.png") no-repeat
+        }
+        .spinner .loader {
+            margin: 0 0 0 -55px;
+            background-color: transparent;
+            -webkit-animation: rotation .7s infinite linear;
+            -moz-animation: rotation .7s infinite linear;
+            -o-animation: rotation .7s infinite linear;
+            animation: rotation .7s infinite linear;
+            border-left: 5px solid #cbcbca;
+            border-right: 5px solid #cbcbca;
+            border-bottom: 5px solid #cbcbca;
+            border-top: 5px solid #2380be;
+            border-radius: 100%
+        }
+        .spinner .loadingMessage {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 125px;
+            text-align: center;
+            z-index: 100;
+            outline: 0
+        }
+        .spinner .loadingSubHeading {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 150%;
+            margin-top: 10px;
+            margin-left: -42px;
+            text-align: center;
+            z-index: 100;
+            outline: 0
+        }
+        @-webkit-keyframes rotation {
+            from {
+                -webkit-transform: rotate(0)
+            }
+            to {
+                -webkit-transform: rotate(359deg)
+            }
+        }
+        @-moz-keyframes rotation {
+            from {
+                -moz-transform: rotate(0)
+            }
+            to {
+                -moz-transform: rotate(359deg)
+            }
+        }
+        @-o-keyframes rotation {
+            from {
+                -o-transform: rotate(0)
+            }
+            to {
+                -o-transform: rotate(359deg)
+            }
+        }
+        @keyframes rotation {
+            from {
+                transform: rotate(0)
+            }
+            to {
+                transform: rotate(359deg)
+            }
+        }
+    </style>
+
+    <!--
+    Angular automatically injects angular-csp.css at run time. To add `nonce` token to that particular
+    inline style, we tell angular to not inject `angular-csp.css` (ng-csp="no-inline-style"), instead we
+    copy `angular-csp.css` manually here and attach our `nonce`
+     -->
+    <style type="text/css" nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+        @charset "UTF-8";
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+        .ng-cloak, .x-ng-cloak,
+        .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+        ng\:form {
+            display: block;
+        }
+        .ng-animate-shim {
+            visibility:hidden;
+        }
+        .ng-anchor {
+            position:absolute;
+        }
+    </style>
+
+        <link rel="stylesheet" href="https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7/css/styles.css" type="text/css">
+
+    <title>PayPal</title>
+</head>
+
+<body>
+
+
+<script nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+    window.meta    = {
+    "correlationId": "0907105243934",
+    "corp": false,
+    "ipaddress": "205.213.5.137",
+    "timestamp": "2022-12-21T18:55:30.000Z",
+    "buildId": "x",
+    "requestTime": 1674573124136,
+    "pageID": "1db8eebd",
+    "geolocation": "US",
+    "userGuid": "8f7841d71830a1f3c87a9fe0ff7d7c1c",
+    "nonce": "AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM",
+    "xoScriptUrl": "https://www.paypalobjects.com/undefined",
+    "domain": "paypal.com",
+    "cdnHost": "www.paypalobjects.com",
+    "staticUrl": "https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7",
+    "codeSplitting": true,
+    "configUrl": "/webapps/shoppingcart/static",
+    "ipcountry": "US",
+    "deployMode": true,
+    "locality": {
+        "country": "US",
+        "lang": "en"
+    },
+    "xclickParams": "d2FfdHlwZSUzRFNob3BwaW5nQ2FydCUyNm1lcmNoYW50X2lkJTNEQlgyVTdSWlVUMzdYTCUyNm1lcmNoYW50X2VtYWlsJTNEY2FjdXN0b21zJTI1NDBnbWFpbC5jb20lMjZtZXJjaGFudF9jb3VudHJ5JTNEVVMlMjZidXNpbmVzcyUzREJYMlU3UlpVVDM3WEw=",
+    "az": "stage2s0007",
+    "dc": "qa",
+    "flowlogging_id": "04a3906671892",
+    "mfid": "1674573118542_04a3906671892",
+    "query": {},
+    "headers": {
+        "x-csrf-jwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6IllpOUVjRk9OU3RhYzhpZXliQ1NSajF6ajVScXFaREJ1Zkw5cVJRbXlRSXVWbDRteXlBWEhVaG81eG5ITXRDYlp3UEpWV0I2QjZwdktTN0wySXhQZWlaUW1zY0tabktNR0cxYkxOcHRqYUh2V2FyelFhWVJ1Y0dPNkNUX2tyZGtPYjZkNHNpTkhMRV9aM0ltUFVLcTZqN3ItRUZrWTBTemU4TzRpclhRUmNmbWVqc1BIcVE3cFpMYVFoNDAiLCJpYXQiOjE2NzQ1NzMxMjQsImV4cCI6MTY3NDU3NjcyNH0.0Cj4vPLBB7X7fLaz8M-3-lGrpSdC6kKDkOomDhZDjFQ",
+        "x-csrf-jwt-hash": "0f8bc7685beff8031efca88c121a553097655e1e6b164a0fdd3f9889fd58c2a7",
+        "x-cookies": "{\"tD08unW5xWPYcc3Vtbf3fJ3V3AQpBSPfm6WSV5oz4qyqFW9g\":\"IHWrLHzaVtNUkf-MNK41RHpR9SXJ5bIclk4kbQo7RTb92ondBUTHL9z3_xcQuG-OpcIRSzKwDDPFBfD8\",\"ag57olvZ7MWSTJXCB7PUbg1HbJ7ibAsoAYd73FZ9IOdz_8eW4AApCl4lKlO\":\"HtSNs74nV4wkKbLSWdBi7ZSca0eOVJ_RFOkdQf0qqviD7cgCUhp4PCXp4UICt3UdQNDdWJzA844O5ADCYwfN8Avbg6pcpVXKdHB0vssYDZrPSd6mR_x8Wchc9aNaINycdEWpxGKbYNH1Sf3sorCnHAswHFUAWq0x5s21veU5eQY1r2mHr4HqffTzwBWh2q2fBedTRV5E5GIlPB_Ic98FGQri8DVTcAnzfWxPl9F0GCXC1KTD6vVLwfGaU3cJSUznIpaZgUYkprzHcl7qyQyqmsbUbPu4f8srFMR-FNKE7_h4LwrssYKpG4J0FvJE4qKA_Ux_Kvn0WOZLT87uw9FsAjRm3EZlyEraezmzevDGc1nTnw0cs0e9O6pMhUT1TAa8Vz_lCGh7A995roj3w2nALtxwOWsyxP1kwD7zysScSWWPyE_N9YSVtr2IxsEhf-Eb-wN-TXArymEhpDMssp_nr8_dmcJSxmWmqeB7qcjzRfR_69JSkmGvi5sXECuywG6rrZmwKhMM1WyXIy6rilCQS9keK6ys5HcngYiFFVeqltm4Gyow-iA2qTNZMb-SvN47VX8vSRQk9ISv6ZLP\"}",
+        "x-cookies-hash": "14b714ca6e9879f7fa7d747ebe429cafc4a79f1d0c6638165d644c345d9a6ee0"
+    }
+};
+    window.cookies = {
+    "ts": "vreXpYrS=1769267524&vteXpYrS=1674574924&vr=8f7841d71830a1f3c87a9fe0ff7d7c1c&vt=e455fbcc1850ad04c5fe7f24fedc2b34&vtyp=return"
+};
+</script>
+
+<noscript>
+    <div style="background-image: url(/webapps/shoppingcart/api/log?event=javascript_disabled&state=pre_bootstrap&level=warn)"></div>
+    <p class="noscript">We're sorry, but to check out using PayPal, you need to turn on JavaScript and enable cookies in your web browser's settings.</p>
+</noscript>
+
+<div id="preloaderSpinner" class="preloader spinner">
+    <div class="spinWrap">
+        <p class="spinnerImage"></p>
+        <p class="loader"></p>
+        <p class="loadingMessage" id="spinnerMessage"></p>
+        <p class="loadingSubHeading" id="spinnerSubHeading"></p>
+    </div>
+</div>
+
+<div ui-view ng-cloak></div>
+
+<script nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+    (function() {
+
+        window.beaconQueue = [];
+
+        window.beacon = function(level, events, payload) {
+
+            // Set up payload
+
+            payload = payload || {};
+
+            payload.event = events.join('|');
+            payload.state = 'pre_bootstrap';
+            payload.level = level;
+            payload.pageID = window.meta && window.meta.pageID;
+            payload.timestamp = Date.now().toString();
+
+            if (window.enablePerformance) {
+                var performance = window.performance;
+                var timing      = window.performance.timing || {};
+
+                if (window.clientStartTime) {
+                    payload.client_elapsed = parseInt(performance.now() - window.clientStartTime);
+                }
+
+                if (timing.connectEnd && timing.navigationStart) {
+                    payload.req_elapsed = parseInt(performance.now() - (timing.connectEnd - timing.navigationStart));
+                }
+            }
+
+            if (level !== 'error' && level !== 'warn') {
+                return beaconQueue.push(payload);
+            }
+
+
+            if (window.console && window.console.log) {
+                console.log(payload.event, payload);
+            }
+
+            // Build URL
+
+            var url   = '/webapps/shoppingcart/api/log?';
+            var query = [];
+
+            for (var prop in payload) {
+                query.push(encodeURIComponent(prop) + '=' + encodeURIComponent(payload[prop]));
+            }
+
+            url += query.join('&');
+
+            // Set up request
+            var req = new XMLHttpRequest();
+            req.open('GET', url, true);
+            req.send(null);
+        };
+
+        var windowErrorCache = [];
+
+        window.onerror = function(message, file, line, col, err) {
+            message = message && (message.stack || message).toString();
+
+            if (!~windowErrorCache.indexOf(message)) {
+                windowErrorCache.push(message);
+                beacon('error', ['pre_window_error'], {
+                    message: message,
+                    file: file && file.toString(),
+                    line: line && line.toString(),
+                    col: col && col.toString(),
+                    stack: err && (err.stack || err).toString()
+                });
+            }
+        };
+
+        window.scripterror = function(event) {
+            window.beacon('error', ['script_error'], {
+                script: event.target.attributes.src.value
+            });
+        };
+
+        window.beacon('info', ['pre_bootstrap']);
+
+    })();
+</script>
+
+<script src="https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7/js/framework.js" onerror="scripterror(event)"></script>
+
+<script src="/webapps/shoppingcart/static/js/config.js" onerror="scripterror(event)"></script>
+<script src="https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7/js/main.js" onerror="scripterror(event)"></script>
+
+<script nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+    (function() {
+        window.beacon('info', ['js_downloaded']);
+
+    })();
+</script>
+<script src="https://www.paypalobjects.com/pa/js/pa.js" async></script>
+
+<script nonce="AaESPrCfF2Tz6NgJzHw+yw2FzPE+wZBJK+mGiS++R27Dm7dM">
+window.preloadComplete();
+</script>
+    <script src="https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7/locales/US/en.js" onerror="scripterror(event)" async></script>
+    <script src="https://www.paypalobjects.com/web/res/689/e540cd0d97b734a7f5b21784b8fb7/metadata/US/en/metadata.js" onerror="scripterror(event)" async></script>
+
+</body>
